@@ -31,21 +31,23 @@ public class Main {
                 .collect(Collectors.toList());
         System.out.println(drafteePerson);
 
-        List<Person> womanPersons = persons.stream()
+        List<Person> wPersons = persons.stream()
                 .filter(x -> x.getEducation() == Education.HIGHER)
-                .filter(x -> (x.getAge() >= 18 && x.getAge() <= 60))
-                .filter(x -> x.getSex() == Sex.WOMAN)
+                //.filter(x -> (x.getAge() >= 18 && x.getAge() <= 60))
+                .filter(x -> x.getSex() == Sex.WOMAN ?
+                        x.getAge() >= 18 && x.getAge() <= 60:
+                        x.getAge() >= 18 && x.getAge() <= 65)
                 .sorted(Comparator.comparing(Person::getFamily))
                 .collect(Collectors.toList());
-        System.out.println(womanPersons);
+        System.out.println(wPersons);
 
-        List<Person> manPersons = persons.stream()
-                .filter(x -> x.getEducation() == Education.HIGHER)
-                .filter(x -> (x.getAge() >= 18 && x.getAge() <= 65))
-                .filter(x -> x.getSex() == Sex.MAN)
-                .sorted(Comparator.comparing(Person::getFamily))
-                .collect(Collectors.toList());
-        System.out.println(manPersons);
+//        List<Person> manPersons = persons.stream()
+//                .filter(x -> x.getEducation() == Education.HIGHER)
+//                .filter(x -> (x.getAge() >= 18 && x.getAge() <= 65))
+//                .filter(x -> x.getSex() == Sex.MAN)
+//                .sorted(Comparator.comparing(Person::getFamily))
+//                .collect(Collectors.toList());
+//        System.out.println(manPersons);
 
     }
 }
